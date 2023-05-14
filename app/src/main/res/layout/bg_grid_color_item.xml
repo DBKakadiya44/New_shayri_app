@@ -4,12 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <GridView
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="2"
-        android:id="@+id/gridviewcolor"
-        >
-    </GridView>
+        android:layout_height="550dp"
+        android:backgroundTint="@null"
+       ></TextView>
+
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/background"
+        android:layout_margin="5dp">
+
+    </TextView>
 
 </LinearLayout>

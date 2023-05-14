@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import java.util.ArrayList;
+import adapters.MyAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -172,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 }else if(position==9){
                     intent.putExtra("shayri",bewafa);
                 }
-                intent.putExtra("image",img);
+                intent.putExtra("img",img[position]);
                 startActivity(intent);
             }
         });

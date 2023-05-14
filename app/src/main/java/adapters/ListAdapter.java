@@ -1,4 +1,4 @@
-package com.example.shayri_app;
+package adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,15 +7,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.example.shayri_app.R;
+import com.example.shayri_app.list_second_page;
 
 public class ListAdapter extends BaseAdapter {
 
-    list_second_page list_second_page;
-    int[] img;
+    com.example.shayri_app.list_second_page list_second_page;
+    int img;
 String shayri[];
 
-    public ListAdapter(com.example.shayri_app.list_second_page list_second_page, int[] img, String[] shayri) {
+    public ListAdapter(com.example.shayri_app.list_second_page list_second_page, int img, String[] shayri) {
         this.list_second_page = list_second_page;
         this.img = img;
         this.shayri = shayri;
@@ -43,11 +44,9 @@ String shayri[];
         ImageView imageView = convertView.findViewById(R.id.img2);
         ImageView imageView2 = convertView.findViewById(R.id.nextbutton);
         TextView textView = convertView.findViewById(R.id.txt2);
-        imageView.setImageResource(R.drawable.bearbar);
+        imageView.setImageResource(img);
         textView.setText(""+shayri[position]);
         imageView2.setImageResource(R.drawable.navigate_next_24);
-
-
 
         return convertView;
     }
