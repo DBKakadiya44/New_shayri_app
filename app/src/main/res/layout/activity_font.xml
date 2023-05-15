@@ -4,12 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="60dp"
-        android:layout_height="45dp"
-        android:id="@+id/background"
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fonts_gridview"
+        android:numColumns="12"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:layout_margin="5dp">
 
-    </TextView>
+    </GridView>
 
 </LinearLayout>

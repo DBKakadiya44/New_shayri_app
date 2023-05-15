@@ -24,6 +24,7 @@ public class Background extends AppCompatActivity
 
         gridView = findViewById(R.id.bg_gridview);
         adapter = new Bg_Adapter(Background.this,colorarr);
+        gridView.setAdapter(adapter);
 
     }
 }
