@@ -1,15 +1,16 @@
 package com.example.shayri_app;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class Third_page extends AppCompatActivity
 {
@@ -17,10 +18,8 @@ public class Third_page extends AppCompatActivity
     ImageView img1,img2,img3,back,next,copy,share;
     String ss[];
     int a=0,count=0,i,cnt=0,z=1;
-    int gridcolorarr[] = {R.drawable.c1,R.drawable.c2,R.drawable.c3,R.drawable.c4,R.drawable.c5,R.drawable.c6,
-            R.drawable.c7,R.drawable.c8,R.drawable.c9,R.drawable.c10,
-            R.drawable.c11,R.drawable.c12,R.drawable.c13,R.drawable.c14,R.drawable.c15};
 
+    GridView gridView;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -77,7 +76,7 @@ public class Third_page extends AppCompatActivity
          public void onClick(View v) {
              if(cnt<15) {
                  if (cnt == i) {
-                     textView.setBackgroundResource(gridcolorarr[i]);
+                     textView.setBackgroundResource(config.gradientArr[i]);
                      cnt++;
                      i++;
                  }
@@ -88,20 +87,30 @@ public class Third_page extends AppCompatActivity
          }
      });
 
-//        img1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //Intent intent = new Intent(Third_page.this,grid_color.class);
-//                //intent.putExtra("shayri",ss[position]);
-//                //startActivity(intent);
-//            }
-//        });
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(Third_page.this);
+                bottomSheetDialog.setContentView(R.layout.bottom_sheet_gradients);
+                GradientAdapter adapter=new GradientAdapter(Third_page.this,config.gradientArr);
+                gridView=bottomSheetDialog.findViewById(R.id.gridviewGradients);
+                gridView.setAdapter(adapter);
+                bottomSheetDialog.show();
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        textView.setBackgroundResource(config.gradientArr[i]);
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+            }
+        });
 
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Third_page.this,Fourth_page.class);
-                intent.putExtra("gridcolorarr",gridcolorarr);
+                intent.putExtra("gridcolorarr",config.gradientArr);
                 intent.putExtra("shayri",ss[position]);
 
                 startActivity(intent);

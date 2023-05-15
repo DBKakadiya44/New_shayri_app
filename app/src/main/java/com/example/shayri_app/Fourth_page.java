@@ -1,12 +1,11 @@
 package com.example.shayri_app;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Fourth_page extends AppCompatActivity
 {
@@ -53,8 +52,8 @@ public class Fourth_page extends AppCompatActivity
         t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Fourth_page.this,Background.class);
-                startActivity(intent);
+                //Intent intent = new Intent(Fourth_page.this,Background.class);
+                //startActivity(intent);
             }
         });
     }

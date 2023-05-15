@@ -29,11 +29,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".Fourth_page"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".Background"
+            android:name=".grid_color"
             android:exported="true">
         </activity>
     </application>

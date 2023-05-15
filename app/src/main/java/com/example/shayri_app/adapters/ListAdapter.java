@@ -1,4 +1,4 @@
-package adapters;
+package com.example.shayri_app.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.shayri_app.R;
-import com.example.shayri_app.list_second_page;
 
 public class ListAdapter extends BaseAdapter {
 

@@ -2,13 +2,14 @@ package com.example.shayri_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import adapters.ListAdapter;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.shayri_app.adapters.ListAdapter;
 
 public class list_second_page extends AppCompatActivity
 {
