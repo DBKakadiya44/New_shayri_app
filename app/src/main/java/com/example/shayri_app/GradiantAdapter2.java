@@ -6,18 +6,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class GradientAdapter extends BaseAdapter
-{
+public class GradiantAdapter2 extends BaseAdapter {
 
-    Third_page third_page;
+    Fourth_page fourth_page;
     int[] gradientArr;
 
-    public GradientAdapter(Third_page third_page, int[] gradientArr) {
-        this.third_page = third_page;
+    public GradiantAdapter2(Fourth_page fourth_page, int[] gradientArr) {
+        this.fourth_page = fourth_page;
         this.gradientArr = gradientArr;
     }
-
-
 
     @Override
     public int getCount() {
@@ -36,7 +33,7 @@ public class GradientAdapter extends BaseAdapter
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(third_page).inflate(R.layout.bottom_sheet_gradient_item,parent,false);
+        convertView = LayoutInflater.from(fourth_page).inflate(R.layout.bottom_sheet_gradient_item,parent,false);
 
         TextView textView = convertView.findViewById(R.id.gridGradients);
         textView.setBackgroundResource(gradientArr[position]);

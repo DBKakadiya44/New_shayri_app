@@ -9,7 +9,6 @@
         android:layout_height="match_parent"
         android:id="@+id/fonts_gridview"
         android:numColumns="12"
-        android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:layout_margin="5dp">
 
     </GridView>

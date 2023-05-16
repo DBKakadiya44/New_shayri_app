@@ -111,14 +111,11 @@ public class Third_page extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent = new Intent(Third_page.this,Fourth_page.class);
                 intent.putExtra("gridcolorarr",config.gradientArr);
-                intent.putExtra("shayri",ss[position]);
-
+                intent.putExtra("shayri",ss);
+                intent.putExtra("a",a);
                 startActivity(intent);
             }
         });
-
-
-
 
     }
 }
