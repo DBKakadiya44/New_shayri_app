@@ -17,6 +17,7 @@ public class config
             R.color.a22,R.color.a23,R.color.a24,R.color.a25,R.color.a26,R.color.a27,R.color.a28,
             R.color.a29,R.color.a30,R.color.a31,R.color.a32,R.color.a33,R.color.a34,R.color.a35,R.color.a1,R.color.a2,R.color.a3,R.color.a4};
 
-
+static  String fonts[] = {"AGENCYB.TTF","AGENCYR.TTF","BAUHS93.TTF","BOD_PSTC.TTF","BRADHITC.TTF","BRUSHSCI.TTF",
+        "COOPBL.TTF","FORTE.TTF","FRABK.TTF","FRABKIT.TTF","GILLUBCD.TTF","GILSANUB.TTF","GOUDYSTO.TTF","HARLOWSI.TTF"};
     static String emoji[] = {"😀😁😂🤣😃😄","😋😊😉😆😅😍","😘🥰😗😙🥲🤔","🤩🤗🙂☺😚🤨","😐😑😶😶‍🌫️🙄","😯🤐😮😥😣😏","❣💕💞💓💗💖","❤️🧡💛💚💙💜"};
 }

@@ -1,5 +1,7 @@
 package com.example.shayri_app;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -114,6 +116,26 @@ public class Third_page extends AppCompatActivity
                 intent.putExtra("shayri",ss);
                 intent.putExtra("a",a);
                 startActivity(intent);
+            }
+        });
+
+        copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("label", textView.getText());
+                clipboard.setPrimaryClip(clip);
+            }
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+                String shareBody = textView.getText().toString();
+                intent.setType("text/plain");
+                intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(intent,"Title"));
             }
         });
 

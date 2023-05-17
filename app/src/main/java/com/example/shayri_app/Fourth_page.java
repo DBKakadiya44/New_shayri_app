@@ -1,5 +1,6 @@
 package com.example.shayri_app;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shayri_app.adapters.BgAdapter;
 import com.example.shayri_app.adapters.EmojiAdapter;
+import com.example.shayri_app.adapters.FontAdapter;
 import com.example.shayri_app.adapters.TextcolorAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -122,6 +124,18 @@ public class Fourth_page extends AppCompatActivity
             public void onClick(View v) {
                 BottomSheetDialog bottomSheetDialog3 = new BottomSheetDialog(Fourth_page.this);
                 bottomSheetDialog3.setContentView(R.layout.activity_font);
+                FontAdapter adapter = new FontAdapter(Fourth_page.this,config.fonts);
+                GridView gridView3 = bottomSheetDialog3.findViewById(R.id.fonts_gridview);
+                gridView3.setAdapter(adapter);
+                bottomSheetDialog3.show();
+
+                gridView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Typeface typeface = Typeface.createFromAsset(getAssets(),config.fonts[position]);
+                        textView.setTypeface(typeface);
+                    }
+                });
             }
         });
 
