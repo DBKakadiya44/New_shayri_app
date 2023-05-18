@@ -1,5 +1,9 @@
 package com.example.shayri_app;
 
+import android.os.Environment;
+
+import java.io.File;
+
 public class config
 {
     static int gradientArr[] = {R.drawable.c1,R.drawable.c2,R.drawable.c3,R.drawable.c4,R.drawable.c5,R.drawable.c6,
@@ -20,4 +24,5 @@ public class config
 static  String fonts[] = {"AGENCYB.TTF","AGENCYR.TTF","BAUHS93.TTF","BOD_PSTC.TTF","BRADHITC.TTF","BRUSHSCI.TTF",
         "COOPBL.TTF","FORTE.TTF","FRABK.TTF","FRABKIT.TTF","GILLUBCD.TTF","GILSANUB.TTF","GOUDYSTO.TTF","HARLOWSI.TTF"};
     static String emoji[] = {"😀😁😂🤣😃😄","😋😊😉😆😅😍","😘🥰😗😙🥲🤔","🤩🤗🙂☺😚🤨","😐😑😶😶‍🌫️🙄","😯🤐😮😥😣😏","❣💕💞💓💗💖","❤️🧡💛💚💙💜"};
+    static File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 }

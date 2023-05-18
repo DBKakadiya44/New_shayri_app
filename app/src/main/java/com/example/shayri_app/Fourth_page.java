@@ -1,13 +1,21 @@
 package com.example.shayri_app;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +24,15 @@ import com.example.shayri_app.adapters.EmojiAdapter;
 import com.example.shayri_app.adapters.FontAdapter;
 import com.example.shayri_app.adapters.TextcolorAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
 
 public class Fourth_page extends AppCompatActivity
 {
@@ -27,6 +44,9 @@ public class Fourth_page extends AppCompatActivity
     GridView gridView,gridView1,gridView2;
     int[] gridcolorarr;
     int[] position;
+    private File downloadFile;
+    //private LinearLayout view1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,6 +178,81 @@ public class Fourth_page extends AppCompatActivity
                 });
             }
         });
+
+        t6.setOnClickListener(view -> {
+            BottomSheetDialog bottomSheetDialog4 = new BottomSheetDialog(Fourth_page.this);
+            bottomSheetDialog4.setContentView(R.layout.activity_text_size);
+            SeekBar seekBar= bottomSheetDialog4.findViewById(R.id.seekBar);
+            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                    textView.setTextSize(2,20+i);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+            bottomSheetDialog4.show();
+        });
+        t3.setOnClickListener(view -> {
+            Bitmap icon = getBitmapFromView(textView);
+            //Intent share = new Intent(Intent.ACTION_SEND);
+            Intent share =new Intent(Intent.ACTION_SEND);
+            share.setType("image/jpeg");
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            icon.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            int num=new Random().nextInt(2000);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
+            String currentDateandTime = sdf.format(new Date());
+
+            downloadFile= new File(config.file.getAbsolutePath() + "/IMG_"+currentDateandTime+".jpg");
+            try
+            {
+                downloadFile.createNewFile();
+                FileOutputStream fo = new FileOutputStream(downloadFile);
+                fo.write(bytes.toByteArray());
+                Toast.makeText(Fourth_page.this,"File Downloaded",Toast.LENGTH_LONG).show();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+
+            share.putExtra(Intent.EXTRA_STREAM, Uri.parse(downloadFile.getAbsolutePath()));
+            startActivity(Intent.createChooser(share, "Share Image"));
+
+        });
+    }
+
+    private Bitmap getBitmapFromView(TextView textView)
+    {
+        //Define a bitmap with the same size as the view
+        Bitmap returnedBitmap = Bitmap.createBitmap(textView.getWidth(), textView.getHeight(), Bitmap.Config.ARGB_8888);
+        //Bind a canvas to it
+        Canvas canvas = new Canvas(returnedBitmap);
+        //Get the view's background
+        Drawable bgDrawable = textView.getBackground();
+        if (bgDrawable != null)
+        {
+            //has background drawable, then draw it on the canvas
+            bgDrawable.draw(canvas);
+        }
+        else
+        {
+            //does not have background drawable, then draw white background on the canvas
+            canvas.drawColor(Color.WHITE);
+        }
+        // draw the view on the canvas
+        textView.draw(canvas);
+        //return the bitmap
+        return returnedBitmap;
 
     }
 }
