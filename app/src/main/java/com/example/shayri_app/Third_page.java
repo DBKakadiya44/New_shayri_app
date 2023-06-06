@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
+import com.example.shayri_app.adapters.ShayriPagerAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class Third_page extends AppCompatActivity
@@ -20,6 +22,7 @@ public class Third_page extends AppCompatActivity
     int a=0,count=0,i,cnt=0,z=1;
 
     GridView gridView;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ public class Third_page extends AppCompatActivity
         next = findViewById(R.id.nextbutton);
         share = findViewById(R.id.shareicon);
         index =findViewById(R.id.index);
-
+        viewPager=findViewById(R.id.viewPager);
         img1.setImageResource(R.drawable.expand);
         img2.setImageResource(R.drawable.reload);
         img3.setImageResource(R.drawable.pencil2);
@@ -117,5 +120,24 @@ public class Third_page extends AppCompatActivity
             }
         });
 
+        ShayriPagerAdapter adapter=new ShayriPagerAdapter(Third_page.this,ss,textView);
+        viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(position);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                textView.setText(""+ss[position]);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }
